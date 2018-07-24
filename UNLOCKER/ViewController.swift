@@ -24,6 +24,16 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var guessCount: UILabel!
     
+    @IBAction func restart(_ sender: UIButton) {
+        //Game is over
+        maxNumber = 100
+        minNumber = 1
+        messagelabel.text = "Guess a number between \(minNumber)~\(maxNumber)"
+        answer = GKRandomSource.sharedRandom().nextInt(upperBound: 100)+1
+        isOver = false
+        guessCounting = 0
+        background.image = UIImage(named: "BG")
+        guessCount.text = "Count : \(guessCounting)"    }
     
     @IBOutlet weak var background: UIImageView!
     
@@ -51,7 +61,7 @@ class ViewController: UIViewController {
                     messagelabel.text = "Out of Scope, Guess a number between \(minNumber)~\(maxNumber)"
                 }else if inputNumber == answer{
                     guessCounting += 1
-                    messagelabel.text = "You are right! Press [Guess] to play again"
+                    messagelabel.text = "You are right! Press [Restart] to play again"
                     isOver = true
                     background.image = UIImage(named: "Finish")
                 }else{
@@ -70,6 +80,7 @@ class ViewController: UIViewController {
             }
             
         }else{
+            /*
             //Game is over
             maxNumber = 100
             minNumber = 1
@@ -79,7 +90,8 @@ class ViewController: UIViewController {
             guessCounting = 0
             background.image = UIImage(named: "BG")
             guessCount.text = "Count : \(guessCounting)"
-            
+            */
+            messagelabel.text = "Press [Restart]"
         }
         
         
